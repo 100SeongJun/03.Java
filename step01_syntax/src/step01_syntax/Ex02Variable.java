@@ -1,30 +1,48 @@
 package step01_syntax;
 
 public class Ex02Variable {
-   public static void main(String[] args) {
-      // Å¸ÀÔ º¯¼ö¸í = °ª;
-      // ±âº»Å¸ÀÓ (primitive) Å¸ÀÔ
-      // Á¤¼ö -2^(n-1) ~ 2^(n-1)-1
-      // n : ºñÆ®¼ö
-      
-      byte vb1 = -128;
-//      byte vb2 = 128 //¿¡·¯
-      short vs1 = 128;
-      
-      int vi1 = 10;
-      int vi2 = 0B1010; // 2Áø¼ö : 0B+2Áø¼ö
-      int vi3 = 012; // 8Áø¼ö : 0+8Áø¼ö
-      int vi4 = 0XA; // 16Áø¼ö : 0X+16Áø¼ö
-      
-      System.out.println(vi1);
-      System.out.println(vi2);
-      System.out.println(vi3);
-      System.out.println(vi4);
-      
-      long vl1 = 10;
-      long vl2 = 10000000000L;
-      
-//      System.out.println(vl2.getClass().getName());
-   }
+	public static void main(String[] args) {
+		// íƒ€ì… ë³€ìˆ˜ëª… = ê°’;
+		// ê¸°ë³¸íƒ€ì„ (primitive) íƒ€ì…
+		// ì •ìˆ˜ -2^(n-1) ~ 2^(n-1)-1
+		// n : ë¹„íŠ¸ìˆ˜
+
+		byte vb1 = -128;
+		// byte vb2 = 128 //ì—ëŸ¬
+		short vs1 = 128;
+
+		int vi1 = 10;
+		int vi2 = 0B1010; // 2ì§„ìˆ˜ : 0B+2ì§„ìˆ˜
+		int vi3 = 012; // 8ì§„ìˆ˜ : 0+8ì§„ìˆ˜
+		int vi4 = 0XA; // 16ì§„ìˆ˜ : 0X+16ì§„ìˆ˜
+
+		System.out.println("vi1: "+vi1);
+		System.out.println("vi2: "+vi2);
+		System.out.println("vi3: "+vi3);
+		System.out.println("vi4: "+vi4);
+
+		// long vl1 = 10;
+		// long vl2 = 10000000000L;
+		// System.out.println(vl2.getClass().getName());
+		// ì‹¤ìˆ˜ : float(32) , double(64)
+		float vf1 = 3.14F;
+		double vd1=3.14;
+		System.out.println("vf1: "+vf1);
+		System.out.println("vd1: "+vd1);	
+		//ë¬¸ì : char(16)
+		char vc1= 'c';
+		char vc2 = 65;
+		char vc3 = '\u0042';
+		String vS1 = "ìºë¦­í„°í˜•";
+		System.out.println("vc1: "+vc1);
+		System.out.println("vc2: "+vc2);
+		System.out.println("vc3: "+vc3);
+		System.out.println("vS1: "+vS1);
+		
+		//boolean(8)
+		boolean vb=true; 
+		System.out.println(vb);
+		
+	}
 
 }
