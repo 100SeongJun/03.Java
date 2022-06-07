@@ -58,4 +58,30 @@ step01_syntax
 		2-2. 멤버(class) 변수 
 			- 위치: 클래스 { 바로 하단에서 선언하여 사용
 			- 객체 생성시 기본값으로 초기화 및 사용가능
+			
 예약어 : https://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html
+
+2. 조건문(conditional statement)
+	1) if문
+		if(조건식) {
+			수행코드1;
+		}
+		else if{
+			수행코드2;
+		}
+		else { 
+			수행코드3;
+		}
+		
+	2) Switch/case문
+		switch(변수명){
+			case 조건1:
+				수행코드1;
+			case 조건2:
+				수행코드2;
+			...
+			default:
+				기본수행코드;
+		}
+		
+	
