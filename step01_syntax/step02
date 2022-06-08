@@ -1,0 +1,52 @@
+[클래스와 객체]
+	-설계
+		1. 데이터 : name, age
+		2. 기능: name, age 값 반환 / 단순출력
+		
+	- 메소드 
+		1. 구조: 리턴타입 getName(매개변수){
+					return 변수
+				}
+				
+[생성자]
+	- 기본 생성자 
+		1. 구조 : ClassName(){}
+		 
+		2. 객체 생성 시, 필수 요소(생략시, 자동완성(기본 생성자만 존재할 때))
+		3. 클래스 이름과 동일해야함
+		
+	- 사용자 정의 생성자 Ex03.
+		1. 구조 : ClassName(String Name, int Age){
+			this.Name = Name;
+			this.Age =Age;
+		}
+		
+		2. 객체 생성시, 초기화 - 생성자 오버로딩(Overloading)
+		3. 반환값, 형태 같으나 매개변수의 갯수가 다른 생성자를 만들 경우
+	- 멤버변수를 사용하기 위해서는 "객체 생성" 해야함
+	
+[Static(정적)] - Ex04Static
+	- 클래스의 소속
+	- 객체 생성 없이도 사용 가능
+	
+	1. Final
+		- 절대 변하면 안되는 수 (상수)
+		- Static과 함께 사용됨
+
+[Domain_model] - model.domain/People && Ex05Access
+	- 객체 지향 분석 설계 기반으로 구현하고자 하는 비즈니스영역의 모델을 생성하는 패턴
+	- 속성, 기능 분리를 잘 해야함
+	- setMethod : 메소드를 통해 값을 변경 
+	
+	- capsulation(캡슐화)
+	- 접근제어자 : 접근제어자를 통해 변수나 메소드의 사용권한을 설정함
+		- public: 어떠한 클래스에서도 접근할 수 있음
+		- protected : 동일 패키지의 클래스 /또는 해당 클래스를 상속받은 다른 패키지의 클래스에서만 접근
+		- default : 해당 패키지 내에서만 접근 가능 (기본값)
+		- private : 해당 클래스 내에서만 접근 가능
+	
+		1. 사용가능 위치 :
+			- 클래스 선언구 : public, default
+			- 변수/생성자/메소드선언구 :public,protected,default,private
+			 
+		
