@@ -11,7 +11,7 @@ public class People {
 		return this.name;
 	}
 
-	int getAge() {
+	public int getAge() {
 		return age;
 	}
 
@@ -40,4 +40,5 @@ public class People {
 		this.name = name;
 		this.age = age;
 	}
+
 }
