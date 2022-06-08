@@ -47,7 +47,9 @@ public class StudentController {
 			StudentModel.delete(name);
 
 		} else if (reqNumber == 5) {
-			EndView.printOne(StudentModel.updateAge("Java"));
+			System.out.println("수정할 이름을 입력하세요:");
+			String name = sc.nextLine();
+			EndView.printOne(StudentModel.updateAge(name));
 		}
 	}
 }

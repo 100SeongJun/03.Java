@@ -1,8 +1,5 @@
 package model;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
-
 import model.domain.Student;
 
 public class StudentModel {
@@ -43,7 +40,10 @@ public class StudentModel {
 	public static boolean insert(Student student) {
 		if (student != null) {
 			if (index != 5) {
-
+				for (int i = 0; i < index; i++) {
+					System.out.println(allData[i]);
+				}
+				System.out.println(index);
 				allData[index] = new Student(student.getName(), student.getAge());
 				index++;
 				return true;
@@ -63,13 +63,17 @@ public class StudentModel {
 	 * - 이름으로 삭제 1. 반복문을 통해서 이름값과 매개변수값을 비교
 	 */
 	public static boolean delete(String name) {
-		for (int i = 0; i <= index - 1; i++) {
+		for (int i = 0; i < index; i++) {
 			if (allData[i] != null && allData[i].getName().equals(name)) {
 				allData[i] = null;
-				Stream<Student> strStream = Arrays.stream(allData);
-				strStream.filter(data -> data != null).forEach(data -> System.out.println());
+				index--;
+				System.out.println(index);
+//				Stream<Student> strStream = Arrays.stream(allData);
+//				strStream.filter(data -> data != null).forEach(data -> System.out.println());
+				allData[i] = allData[index];
+				allData[index] = null;
 				System.out.println("삭제완료");
-//				index--;
+
 				return true;
 			}
 		}
@@ -79,7 +83,12 @@ public class StudentModel {
 
 	// 수정 : 이름으로 검색 -> 학생의 이름이 있다면 -> 한살 추가 // updateAge
 	public static Student updateAge(String name) {
-
+		for (int i = 0; i <= index; i++) {
+			if (allData[i] != null && allData[i].getName().equals(name)) {
+				allData[i].setAge(allData[i].getAge() + 1);
+				return allData[i];
+			}
+		}
 		return null;
 	}
 }
