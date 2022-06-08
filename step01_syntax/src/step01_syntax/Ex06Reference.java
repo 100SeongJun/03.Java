@@ -75,7 +75,7 @@ public class Ex06Reference {
 			for (int j = 1; j <= 9; j++) {
 				arr1[j - 1] = i * j;
 			}
-			System.out.println(i + "단:" + Arrays.toString(arr1));
+			System.out.println(i + "단: " + Arrays.toString(arr1));
 		}
 	}
 }
