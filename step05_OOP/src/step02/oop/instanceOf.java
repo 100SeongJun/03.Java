@@ -22,5 +22,6 @@ public class instanceOf {
 		System.out.println(a2 instanceof A); // True
 		System.out.println(a2 instanceof B); // False
 		System.out.println(a2 instanceof C); // True
+		System.out.println(a3 instanceof A);
 	}
 }
