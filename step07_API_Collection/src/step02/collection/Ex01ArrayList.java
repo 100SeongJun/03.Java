@@ -7,7 +7,7 @@ import model.domain.Student;
 public class Ex01ArrayList {
 
 	public static void main(String[] args) {
-		ArrayList arr1 = new ArrayList();
+		ArrayList<Object> arr1 = new ArrayList<Object>();
 		arr1.add("Java");
 		arr1.add(new Student("Java", 1, "Junior"));
 		arr1.add(3);
