@@ -1,6 +1,5 @@
 package Exception;
 
-@SuppressWarnings("serial")
 public class NotAdminException extends Exception {
 	public NotAdminException() {
 
