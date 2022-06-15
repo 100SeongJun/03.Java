@@ -83,7 +83,7 @@ public class OptionalStreamTest {
 //		// ex. sorted
 //		Arrays.asList("A", "B", "AB", "O").stream().sorted().forEach(System.out::print);
 //		System.out.println();
-//		// sum
+//		// sum 	
 //		IntStream.of(1, 2, 3, 4, 5, 6).forEach(System.out::print);
 
 		Person donghyun = new Person("donghyun", "intp");
@@ -121,8 +121,8 @@ public class OptionalStreamTest {
 		personList.add(yeonghun);
 		personList.add(myungyun);
 
-		personList.stream().filter(v -> v.getMbti().charAt(0) == 'i' && v.getMbti().charAt(3) == 'j')
+		personList.stream().filter(person -> person.getMbti().charAt(0) == 'i' && person.getMbti().charAt(3) == 'j')
 //				.forEach(System.out::println);
-				.forEach(v -> System.out.println(v.getName() + "의 mbti: " + v.getMbti()));
+				.forEach(person -> System.out.println(person.getName() + "의 mbti: " + person.getMbti()));
 	}
 }

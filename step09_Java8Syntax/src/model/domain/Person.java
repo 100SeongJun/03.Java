@@ -6,6 +6,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Person {
-	String name;
-	String mbti;
+	private String name;
+	private String mbti;
 }

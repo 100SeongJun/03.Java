@@ -48,5 +48,4 @@ public class LocalAnonymousInnerTest {
 		System.out.println();
 		runner.run();
 	}
-
 }
