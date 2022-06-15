@@ -33,25 +33,32 @@ public class BTService {
 	}
 
 	// BTProject id로 검색
-	public BTProjectDTO getBTProject(String btProjectName) throws SQLException, NotExistException {
-
-		return null;
+	public BTProjectDTO getBTProject(String btProjectid) throws SQLException, NotExistException {
+		BTProjectDTO getBTO = BTProjectDAO.getBTProject(btProjectid);
+		return getBTO;
 	}
 
 	// 새로운 BTProject 저장
 	public boolean addBTProject(BTProjectDTO btProject) throws SQLException {
+		BTProjectDAO.addBTProject(btProject);
 		return false;
 	}
 
 	// 기존 BTProject 수정
 	public boolean updateBTProject(String btProjectId, String btProjectContent) throws SQLException, NotExistException {
-		notExistBTProject(btProjectContent);
+		if (BTProjectDAO.updateBTProjectdonor(btProjectId, btProjectContent)) {
+			return true;
+		}
 		return false;
 	}
 
 	// BTProject 삭제
 	public boolean deleteBTProject(String btProjectId) throws SQLException, NotExistException {
-		notExistBTProject(btProjectId);
+		if (BTProjectDAO.deleteBTProject(btProjectId)) {
+
+			return true;
+		}
+		;
 		return false;
 	}
 
@@ -97,7 +104,7 @@ public class BTService {
 		}
 	}
 
-	public static boolean addRecipient(RecipientDTO recipient) throws SQLException {
+	public boolean addRecipient(RecipientDTO recipient) throws SQLException {
 		return RecipientDAO.addRecipient(recipient);
 	}
 

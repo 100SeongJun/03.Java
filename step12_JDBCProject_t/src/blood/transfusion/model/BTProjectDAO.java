@@ -16,14 +16,14 @@ public class BTProjectDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("insert into blood_transfusion_project values(?, ?, ?, ?, ?)");
+			pstmt = con.prepareStatement("insert into bt_project values(?, ?, ?, ?, ?)");
 			pstmt.setString(1, btProject.getBtProjectName());
 			pstmt.setString(2, btProject.getBtProjectId());
 			pstmt.setString(3, btProject.getDonorId());
 			pstmt.setString(4, btProject.getRecipientId());
 			pstmt.setString(5, btProject.getbtContent());
-
-			int result = pstmt.executeUpdate();
+			// 입력값 받을 수 있음
+			int result = pstmt.executeUpdate(); // 에러문장
 
 			if (result == 1) {
 				return true;
@@ -40,8 +40,7 @@ public class BTProjectDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
-
-			pstmt = con.prepareStatement("update bt_project set donor_id=? where bt_project_id=?");
+			pstmt = con.prepareStatement("update bt_project set donor_id=? where bt_project_id= ?");
 			pstmt.setString(1, donorId);
 			pstmt.setString(2, btProjectId);
 
@@ -77,13 +76,13 @@ public class BTProjectDAO {
 	}
 
 	// 프로젝트 이름으로 프로젝트 삭제
-	public static boolean deleteBTProject(String btProjectName) throws SQLException {
+	public static boolean deleteBTProject(String btProjectid) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("delete from bt_project where bt_project_name=?");
-			pstmt.setString(1, btProjectName);
+			pstmt = con.prepareStatement("delete from bt_project where bt_project_id=?");
+			pstmt.setString(1, btProjectid);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
 				return true;
@@ -95,7 +94,7 @@ public class BTProjectDAO {
 	}
 
 	// 프로젝트 이름으로 프로젝트 검색
-	public static BTProjectDTO getBTProject(String btProjectName) throws SQLException {
+	public static BTProjectDTO getBTProject(String btProjectid) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
@@ -103,12 +102,12 @@ public class BTProjectDAO {
 
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("select * from bt_project where bt_project_name=?");
-			pstmt.setString(1, btProjectName);
+			pstmt = con.prepareStatement("select * from bt_project where bt_project_id=?");
+			pstmt.setString(1, btProjectid);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
-				blood_transfusionUser = new BTProjectDTO(rset.getString(2), rset.getString(3), rset.getString(4),
-						rset.getString(5), rset.getString(6));
+				blood_transfusionUser = new BTProjectDTO(rset.getString(1), rset.getString(2), rset.getString(3),
+						rset.getString(4), rset.getString(5));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
