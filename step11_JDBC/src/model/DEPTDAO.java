@@ -201,6 +201,35 @@ public class DEPTDAO {
 		}
 	}
 
+	public static void test() throws SQLException {
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rset = null;
+		try {
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/sakila", "scott", "tiger");
+			stmt = conn.createStatement();
+//			select * from 'table1' join 'table2';
+			rset = stmt.executeQuery(String.format("select * from actor"));
+			System.out.println("2222222");
+			while (rset.next()) {
+				System.out.println(rset.getString(1));
+				System.out.println(rset.getString(2));
+				System.out.println(rset.getString(3));
+				System.out.println(rset.getString(4));
+//				System.out.println(rset.getString(5));
+//				System.out.println("MGR: " + rset.getString("MGR"));
+//				System.out.println("DEPTNO: " + rset.getString("dEPTNO"));
+//				System.out.println("ENAME: " + rset.getString("eNAME"));
+//				System.out.println("-----------");
+			}
+
+		} finally {
+			DBUtil.getClose(rset, stmt, conn);
+//			stmt.close();
+//			conn.close();
+		}
+	}
+
 	public static void main(String[] args) {
 		try {
 			// 모든 부서 검색
@@ -217,9 +246,10 @@ public class DEPTDAO {
 //			for (DeptDTO dept : getAllDept()) {
 //				System.out.println(dept);
 //			}
-			joindept("dept", "emp");
+//			joindept("dept", "emp");
 
 //			deleteDept(50);
+			test();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

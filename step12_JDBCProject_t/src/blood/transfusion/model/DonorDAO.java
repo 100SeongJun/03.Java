@@ -10,7 +10,7 @@ import blood.transfusion.dto.DonorDTO;
 import blood.transfusion.util.DBUtil;
 
 public class DonorDAO {
-	public static boolean addDonor(DonorDTO donor) throws SQLException{
+	public static boolean addDonor(DonorDTO donor) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -22,13 +22,13 @@ public class DonorDAO {
 			pstmt.setString(4, donor.getSex());
 			pstmt.setString(5, donor.getBloodType());
 			pstmt.setString(6, donor.getPurposeDonation());
-			
+
 			int result = pstmt.executeUpdate();
-		
-			if(result == 1){
+
+			if (result == 1) {
 				return true;
 			}
-		}finally{
+		} finally {
 			DBUtil.close(con, pstmt);
 		}
 		return false;
@@ -56,6 +56,7 @@ public class DonorDAO {
 		return false;
 	}
 
+	// 도너 삭제
 	// sql - delete from donor where donor_id=?
 	public static boolean deleteDonor(String donorId) throws SQLException {
 		Connection con = null;
@@ -65,8 +66,11 @@ public class DonorDAO {
 			pstmt = con.prepareStatement("delete from donor where donor_id=?");
 			pstmt.setString(1, donorId);
 			int result = pstmt.executeUpdate();
+			System.out.println("69Line DAO");
 			if (result == 1) {
+
 				return true;
+
 			}
 		} finally {
 			DBUtil.close(con, pstmt);
@@ -83,11 +87,13 @@ public class DonorDAO {
 
 		try {
 			con = DBUtil.getConnection();
-			pstmt = con.prepareStatement("select * from donor where Donor_id=?");
+			pstmt = con.prepareStatement("select * from donor where donor_id=?");
 			pstmt.setString(1, donorId);
 			rset = pstmt.executeQuery();
+			System.out.println("??");
 			if (rset.next()) {
-				Donor = new DonorDTO(rset.getString(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getString(5), rset.getString(6));
+				Donor = new DonorDTO(rset.getString(1), rset.getString(2), rset.getInt(3), rset.getString(4),
+						rset.getString(5), rset.getString(6));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
@@ -97,8 +103,8 @@ public class DonorDAO {
 
 	// 모든 헌혈자 검색해서 반환
 	// sql - select * from donor
-	public static  ArrayList<DonorDTO> getAllDonors() throws SQLException {
-		Connection con= null;
+	public static ArrayList<DonorDTO> getAllDonors() throws SQLException {
+		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<DonorDTO> list = null;
@@ -106,12 +112,13 @@ public class DonorDAO {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement("select * from donor");
 			rset = pstmt.executeQuery();
-			
+
 			list = new ArrayList<DonorDTO>();
-			while(rset.next()) {
-				list.add(new DonorDTO(rset.getString(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getString(5), rset.getString(6) ));
+			while (rset.next()) {
+				list.add(new DonorDTO(rset.getString(1), rset.getString(2), rset.getInt(3), rset.getString(4),
+						rset.getString(5), rset.getString(6)));
 			}
-		}finally {
+		} finally {
 			DBUtil.close(con, pstmt, rset);
 		}
 		return list;

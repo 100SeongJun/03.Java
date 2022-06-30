@@ -10,7 +10,7 @@ import blood.transfusion.dto.RecipientDTO;
 import blood.transfusion.util.DBUtil;
 
 public class RecipientDAO {
-	public static boolean addRecipient(RecipientDTO recipient) throws SQLException{
+	public static boolean addRecipient(RecipientDTO recipient) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
@@ -22,13 +22,13 @@ public class RecipientDAO {
 			pstmt.setString(4, recipient.getSex());
 			pstmt.setString(5, recipient.getBloodType());
 			pstmt.setString(6, recipient.getPurposeTransfusion());
-			
+
 			int result = pstmt.executeUpdate();
-		
-			if(result == 1){
+
+			if (result == 1) {
 				return true;
 			}
-		}finally{
+		} finally {
 			DBUtil.close(con, pstmt);
 		}
 		return false;
@@ -66,6 +66,7 @@ public class RecipientDAO {
 			pstmt.setString(1, recipientId);
 			int result = pstmt.executeUpdate();
 			if (result == 1) {
+
 				return true;
 			}
 		} finally {
@@ -87,7 +88,8 @@ public class RecipientDAO {
 			pstmt.setString(1, recipientId);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
-				recipient = new RecipientDTO(rset.getString(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getString(5), rset.getString(6));
+				recipient = new RecipientDTO(rset.getString(1), rset.getString(2), rset.getInt(3), rset.getString(4),
+						rset.getString(5), rset.getString(6));
 			}
 		} finally {
 			DBUtil.close(con, pstmt, rset);
@@ -97,8 +99,8 @@ public class RecipientDAO {
 
 	// 모든 수혈자 검색해서 반환
 	// sql - select * from Recipient
-	public static  ArrayList<RecipientDTO> getAllRecipients() throws SQLException {
-		Connection con= null;
+	public static ArrayList<RecipientDTO> getAllRecipients() throws SQLException {
+		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ArrayList<RecipientDTO> list = null;
@@ -106,12 +108,13 @@ public class RecipientDAO {
 			con = DBUtil.getConnection();
 			pstmt = con.prepareStatement("select * from Recipient");
 			rset = pstmt.executeQuery();
-			
+
 			list = new ArrayList<RecipientDTO>();
-			while(rset.next()) {
-				list.add(new RecipientDTO(rset.getString(1), rset.getString(2), rset.getInt(3), rset.getString(4), rset.getString(5), rset.getString(6) ));
+			while (rset.next()) {
+				list.add(new RecipientDTO(rset.getString(1), rset.getString(2), rset.getInt(3), rset.getString(4),
+						rset.getString(5), rset.getString(6)));
 			}
-		}finally {
+		} finally {
 			DBUtil.close(con, pstmt, rset);
 		}
 		return list;

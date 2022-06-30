@@ -39,8 +39,8 @@ public class BTController {
 	// 특정 프로젝트 검색
 	public void selectBTProject() {
 		try {
-			RunningEndView.projectView(service.getBTProject("bt2"));
-			RunningSuccessView.showSuccess("특정 프로젝트 검색 성공");
+			RunningEndView.projectView(service.getBTProject("bt5"));
+//			RunningSuccessView.showSuccess("특정 프로젝트 검색 성공");
 		} catch (SQLException e) {
 			RunningEndView.showError("<SQLException> 특정 프로젝트 검색시 에러 발생");
 		} catch (NotExistException e) {
@@ -92,7 +92,6 @@ public class BTController {
 				RunningEndView.showError("업데이트 할 정보가 없습니다.");
 			}
 		} catch (SQLException e) {
-			System.err.println(e);
 			RunningEndView.showError("SQLERROR");
 		} catch (NotExistException e) {
 			System.out.println(e);
@@ -119,15 +118,15 @@ public class BTController {
 
 	// 특정 헌혈자 삭제
 	public void removeDonor() {
-		String donor_id = "donor3";
+		String donor_id = "Donor4";
+
 		try {
 			if (service.deleteDonor(donor_id)) {
-//				service.deleteBTProject(donor_id);
+				String btprojectid = service.getBTPid(donor_id);
 			}
+			;
 
 		} catch (SQLException | NotExistException e) {
-			RunningEndView.showError(donor_id + "가 없습니다.");
-			RunningEndView.showError(donor_id + "가 없습니다.");
 		}
 	}
 

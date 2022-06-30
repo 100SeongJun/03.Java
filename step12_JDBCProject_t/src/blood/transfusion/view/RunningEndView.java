@@ -7,6 +7,7 @@ import blood.transfusion.dto.BTProjectDTO;
 public class RunningEndView {
 	// 모든 프로젝트 출력
 	public static void projectListView(ArrayList allProject) {
+//		System.out.println(allProject);
 		int length = allProject.size();
 		if (length != 0) {
 			for (int index = 0; index < length; index++) {
@@ -17,10 +18,10 @@ public class RunningEndView {
 
 	// 특정 프로젝트 출력
 	public static void projectView(BTProjectDTO project) {
+		System.out.println(project);
 		if (project == null) {
-
+			System.out.println(project);
 		} else {
-
 			System.out.println(project);
 		}
 	}

@@ -32,6 +32,12 @@ public class BTService {
 		return BTProjectDAO.getAllBTProjects();
 	}
 
+	// Donor ID로 BTProject 값 검색
+	public String getBTPid(String donor_id) throws SQLException, NotExistException {
+
+		return BTProjectDAO.getBtID(donor_id);
+	}
+
 	// BTProject id로 검색
 	public BTProjectDTO getBTProject(String btProjectid) throws SQLException, NotExistException {
 		BTProjectDTO getBTO = BTProjectDAO.getBTProject(btProjectid);
@@ -63,7 +69,9 @@ public class BTService {
 	}
 
 	// Donor - CRUD
+//	public void notExistDonor(String donorId) throws NotExistException, SQLException {
 	public void notExistDonor(String donorId) throws NotExistException, SQLException {
+		System.out.println(donorId);
 		DonorDTO Donor = DonorDAO.getDonor(donorId);
 		if (Donor == null) {
 			throw new NotExistException("검색한  헌혈자가 미 존재합니다.");

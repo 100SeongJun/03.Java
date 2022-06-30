@@ -136,4 +136,24 @@ public class BTProjectDAO {
 		}
 		return list;
 	}
+
+	// Donor 이름으로 프로젝트 이름 추출
+	public static String getBtID(String donor_id) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<BTProjectDTO> list = null;
+		try {
+			con = DBUtil.getConnection();
+			pstmt = con.prepareStatement("select bt_project_id from bt_project where donor_id=?");
+			pstmt.setString(1, donor_id);
+			rset = pstmt.executeQuery();
+//			System.out.println(rset);
+//			while (rset.next()) {
+//			}
+		} finally {
+			DBUtil.close(con, pstmt, rset);
+		}
+		return null;
+	}
 }
